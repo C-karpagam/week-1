@@ -1,0 +1,285 @@
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #111;
+  color: #fff;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Light Theme */
+body.light-mode {
+  background-color: #f9f9f9;
+  color: #111;
+}
+body.light-mode .overlay {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+body.light-mode .card {
+  background-color: #fff;
+  color: #000;
+}
+body.light-mode header {
+  background: #e6e6e6;
+}
+body.light-mode nav a {
+  color: #333;
+}
+body.light-mode nav a:hover {
+  color: #ff5c57;
+}
+body.light-mode .logo {
+  color: #d12d2d;
+}
+
+/* Header */
+header {
+  background: #111;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  transition: background 0.3s ease;
+}
+.logo {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #ff5c57;
+}
+nav {
+  position: relative;
+}
+.nav-links {
+  display: flex;
+  gap: 15px;
+}
+nav a {
+  text-decoration: none;
+  color: #ccc;
+  transition: color 0.3s ease;
+}
+nav a:hover {
+  color: #ffb347;
+}
+
+/* Mobile Menu */
+.menu-toggle {
+  display: none;
+  font-size: 1.5em;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: #222;
+    position: absolute;
+    right: 0;
+    top: 60px;
+    width: 200px;
+    padding: 15px;
+    border-radius: 10px;
+  }
+  .nav-links.show {
+    display: flex;
+  }
+}
+
+.state-section {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  min-height: 100vh;
+  padding: 60px 20px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.state-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(15, 15, 40, 0.4), rgba(0, 0, 0, 0.85));
+  z-index: 0;
+}
+.state-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+.state-section:hover {
+  filter: brightness(1.05);
+  transform: scale(1.01);
+}
+
+/* Overlay Title */
+.overlay {
+  background: transparent;
+  padding: 20px;
+  text-align: center;
+  animation: fadeIn 1s ease;
+}
+.overlay h2 {
+  font-size: 2.5em;
+  color: #ffd369;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+/* Festival Cards */
+.cards {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  margin-top: 20px;
+  perspective: 1000px;
+}
+.cards::-webkit-scrollbar {
+  display: none;
+}
+.cards {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(2px);
+  border-radius: 16px;
+  width: 360px;
+  min-height: 300px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  transition: transform 0.6s ease, background 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.card:hover {
+  transform: rotateX(8deg) translateY(-10px) scale(1.03);
+  background: rgba(255, 255, 255, 0.08);
+}
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Text inside card */
+.card-content {
+  padding: 20px;
+  background: rgba(255, 193, 7, 0.2);
+  backdrop-filter: blur(4px);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  text-align: center;
+  animation: fadeIn 1s ease;
+  width: 100%;
+}
+
+.card-content strong {
+  font-size: 1.5em;
+  color: #ffc857;
+  display: block;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+/* Footer */
+footer {
+  background: #1a1a1a;
+  color: #ccc;
+  padding: 40px 20px;
+  text-align: center;
+  margin-top: 50px;
+  font-size: 0.95em;
+  border-top: 1px solid #333;
+}
+footer h3 {
+  color: #ff5c57;
+  margin-bottom: 15px;
+}
+footer a {
+  color: #ffb347;
+  text-decoration: none;
+  margin: 0 8px;
+  transition: color 0.3s ease;
+}
+footer a:hover {
+  color: #fff;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #444;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2em;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 1001;
+  transition: background 0.3s ease;
+}
+.theme-toggle:hover {
+  background: #666;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Cards */
+@media (max-width: 768px) {
+  .cards {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+  .card {
+    flex: 0 0 auto;
+    width: 80%;
+  }
+  .overlay h2 {
+    font-size: 1.8em;
+  }
+  .card img {
+    height: 180px;
+  }
+}
